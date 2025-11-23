@@ -1,7 +1,7 @@
 const {app,BrowserWindow,Menu,globalShortcut,Tray,Notification,ipcMain,session} = require('electron');
 const path = require('path');
 const process = require('process');
-const { autoUpdater } = require("electron-updater");
+import {autoUpdater} from 'electron-updater';
 
 let win;
 //electron code
