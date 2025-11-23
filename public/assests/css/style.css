@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* .body{
+    background-image: linear-gradient(to left,rgba(0, 0, 0, 0.541),rgba(24, 24, 199, 0.514));
+    color: white;
+} */
+.loginbox{
+    background-color: whitesmoke;
+}
+.login_frm{
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 5px 500px white;
+    padding: 20px;
+    position: relative;
+    backdrop-filter: blur(20px);
+    color: black;
+    background-color:whitesmoke;
+}
+.signup_frm{
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 5px 500px white;
+    position: relative;
+    backdrop-filter: blur(20px);
+    color: black;
+    /* background-color: rgb(0,0,0,0.1); */
+}
+.profilepicbox{
+    width: 300px;
+    border-radius: 5px;
+}
+.imgbox{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+#profilepic{
+    width: 100%;
+    height: 100%;
+}
+#profilepicmenu{
+    width: 50px;
+    height: 50px;
+}
+.left,.right,.center{
+    height: 100vh;
+}
+#addusericon{
+    font-size: 200px;
+    margin-top: 50px;
+    margin-left: 250px;
+}
+#scrollvideouser{
+    overflow: scroll;
+    scrollbar-width: none;
+    scrollbar-width: 0px;
+    height: 530px;
+}
+.vbox{
+    position: relative;
+}
+#senderV{
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+}
+#userprofilepic{
+    width: 100px;
+    height: 100px;
+}
+.userprofilebox{
+    width: 300px;
+    height: auto;
+    margin: 50px auto 0 ;
+}
+.spinbox{
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    left: 46%;
+}
+.menus,#profile,#logout{
+    cursor: pointer;
+}
+#toast{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100000000000000000000000000000000000;
+}
+.toastimg{
+    width: 50px;
+    height: 50px;
+}
+#profilepicinput{
+    padding: 50px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    opacity: 0;
+}
+#callingshowandhide{
+    position: absolute;
+    top: 0;
+    left: 38%;
+    z-index: 1000000000000000000000;
+}
+.menu{
+    cursor: pointer;
+}
+#loadtoast{
+    position: absolute;
+    background-color: black;
+    z-index: 100000000000000000000000000000;
+    padding: 20px;
+}
+#text-blinck{
+    animation: blink 5s infinite;
+}
+@keyframes blink {
+    0%{color: white; opacity: 1;}
+    50%{color: rgb(21, 74, 248); opacity: 1;}
+    100%{color: rgb(241, 10, 10); opacity: 0;}
+}

@@ -1,0 +1,35 @@
+{
+  "name": "callflux",
+  "version": "1.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "watch": "nodemon --exec electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.callflux.app",
+    "win": {
+      "target": "nsis"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "mrbrajeshdabi",
+        "repo": "https://github.com/mrbrajeshdabi/callflux.git"
+      }
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^39.2.3",
+    "electron-builder": "^26.0.12",
+    "electron-packager": "^17.1.2",
+    "electron-updater": "^6.6.2"
+  }
+}

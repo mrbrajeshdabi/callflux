@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header"><span class="card-title">Profile</span></div>
+    <div class="card-body">
+        <div class="insertprofile">
+
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">update profile</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="update_frm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="profilepic">profile pic</label>
+                <input type="file" class="form-control" id="profilepic" name="profilepic" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="username">username</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="mn">mobile number</label>
+                <input type="text" class="form-control" id="mobilenumber" name="mobilenumber">
+            </div>
+            <button class="btn btn-dark w-100 mt-3" id="updatebtn" type="submit">Update Now</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+<script type="module" src="assests/js/userprofile.js"></script>
