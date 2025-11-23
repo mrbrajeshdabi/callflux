@@ -27,9 +27,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "electron": "^39.2.3",
     "electron-builder": "^26.0.12",
-    "electron-packager": "^17.1.2",
+    "electron": "^39.2.3",
     "electron-updater": "^6.6.2"
   }
 }
