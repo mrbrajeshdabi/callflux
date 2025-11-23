@@ -1,7 +1,7 @@
 const {app,BrowserWindow,Menu,globalShortcut,Tray,Notification,ipcMain,session} = require('electron');
 const path = require('path');
 const process = require('process');
-import {autoUpdater} from 'electron-updater';
+// import {autoUpdater} from 'electron-updater';
 
 let win;
 //electron code
@@ -14,7 +14,7 @@ const createEwindow = () =>
         title:'callflux',
         resizable:false,
         frame:true,
-        icon : path.join(__dirname,'callicon.png'),
+        icon : path.join(__dirname,'logo.ico'),
         webPreferences:{
             nodeIntegration:true,
             contextIsolation:true,
@@ -100,7 +100,7 @@ function createmenu()
 
 function tray()
 {
-    const iconPath = path.join(__dirname, 'callicon.png');
+    const iconPath = path.join(__dirname, 'logo.ico');
     tray = new Tray(iconPath);
     tray.setToolTip("Z");
     tray.on("click", () => {
@@ -110,23 +110,23 @@ function tray()
 }
 
 // Auto update code
-autoUpdater.autoDownload = true;
+// autoUpdater.autoDownload = true;
 
-autoUpdater.on("update-available", () => {
-  console.log("Update available…");
-});
+// autoUpdater.on("update-available", () => {
+//   console.log("Update available…");
+// });
 
-autoUpdater.on("update-downloaded", () => {
-  console.log("Update downloaded. Will install on restart.");
-  autoUpdater.quitAndInstall(); // Restart करके update install करेगा
-});
+// autoUpdater.on("update-downloaded", () => {
+//   console.log("Update downloaded. Will install on restart.");
+//   autoUpdater.quitAndInstall(); // Restart करके update install करेगा
+// });
 
 
 app.whenReady().then(()=>{
     createEwindow();
     createmenu();
     tray();
-    autoUpdater.checkForUpdatesAndNotify();
+    // autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on('web-contents-created', (event, contents) => {
