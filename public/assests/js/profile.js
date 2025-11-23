@@ -1,9 +1,5 @@
-import {local, logout, PC, useraddlist, userinfo, userstatus} from './function.js';
+import {checkappisready, deleteuser, local, logout, PC, useraddlist, userinfo, userstatus} from './function.js';
 $(document).ready(function(){
-    // ipcRenderer.on('resume-app',()=>{
-    //     //    // Yaha kuch bhi reload ya redirect mat karo
-    //     //    // Page wahi se resume karega
-    // });
     let answer = new Audio('assests/toon/reciver.mp3');
     let localstream;
     let socket = io('https://naxivoreal.onrender.com');
@@ -21,11 +17,12 @@ $(document).ready(function(){
             if(res.getadduserdata.length >= 1)
             {
                 res.getadduserdata.forEach(index => {
-                    let html = `<li class="list-group-item">
+                    let html = `<li class="list-group-item" id="listdelid${index._id}">
                                 <div class="d-flex">
                                     <img src="${index.rpic}" class="img-fluid img-thumbnail" id="profilepicmenu">
                                     <span class="ms-3 mt-3" id="status${index.rid}"></span>
                                     <span class="ms-3 mt-3">${index.rusername}</span>
+                                    <button class="btn btn-light w-50 ms-5 deleteuser" type="button" id="delid${index._id}" delid=${index._id}><i class="fa fa-trash animate__animated animate__pulse"></i></button>
                                 </div>
                             </li>`;
                     $("#insertadduser").append(html);
@@ -41,13 +38,22 @@ $(document).ready(function(){
                         </li>`;
             $("#insertadduser").append(html);
        }
-    });
-       
-    // setTimeout(async () => {
-    //     await list();
-    //     // $(".friends").click();
-    // }, 1000);
 
+        $('.deleteuser').each(function(){
+            $(this).click(async function(){
+                $('.spinbox').html('<i class="fa fa-spinner fa-spin"></i>');
+                let delid = $(this).attr('delid');
+                $("#delid"+delid).html('Please Wait ..');
+                let res = await deleteuser(delid);
+                if(res.status == true)
+                {
+                    $('.spinbox').html('');
+                    $("#listdelid"+delid).addClass('d-none');
+                }
+            });
+        });
+    });
+    
     $('.menu').each(function(){
         $(this).click(async function(){
             let  page = $(this).attr('link');
@@ -70,18 +76,13 @@ $(document).ready(function(){
     $("#logout").click(function(){
         window.location.href='index.html';
         window.EAPI.quit('quit');
-        // logout().then((data)=>{
-        //     if(data == 'logout')
-        //     {
-        //         window.location.href='index.html';
-        //         window.EAPI.quit('quit');
-        //     }
-        //     else
-        //     {
-        //         console.warn('Enything Else');
-                
-        //     }
-        // });
+    });
+
+    $("#mainlogout").click(function(){
+        if(localStorage.removeItem('userid') == undefined)
+        {
+            window.EAPI.logout('logout now');
+        }
     });
 
     let PC = (function(){
@@ -117,8 +118,6 @@ $(document).ready(function(){
             }
         }
     })();
-
-
 //calling system
 async function reciveoffer({sid,rid,sname,spic,offer}) {
     $("#mute").attr('sid',sid);
@@ -167,14 +166,42 @@ async function sendanswer({sid,rid,sname,spic,offer}) {
     await pc.setLocalDescription(answer);
     socket.emit('answer',{sid,rid,sname,spic,answer:pc.localDescription});
 }
+async function cameraOF({sid,rid,type}) {
+    if(type == "on")
+    {
+        $("#cameraoff").html('<i class="fa fa-video"></i>');
+        $("#cameraoff").attr('type','off');
+        localstream.getTracks()[1].enabled = false;
+    }
+    else
+    {
+        $("#cameraoff").html('<i class="fa fa-video-slash"></i>');
+        $("#cameraoff").attr('type','on');
+        localstream.getTracks()[1].enabled = true;
+    }
+}
 
+async function muted({sid,rid,type}) {
+    if(type == "mute")
+    {
+        $("#mute").html('<i class="fa fa-microphone"></i>');
+        $("#mute").attr('type','unmute');
+        localstream.getTracks()[0].enabled = false;
+    }
+    else
+    {
+        $("#mute").html('<i class="fa fa-microphone-slash"></i>');
+        $("#mute").attr('type','mute');
+        localstream.getTracks()[0].enabled = true;
+    }
+}
 
 socket.on('offer',async({sid,rid,sname,spic,offer})=>{
     if(userinfo().mobilenumber == rid)
     {
         await answer.play();
         answer.loop = true;
-        let stream = await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+        let stream = await navigator.mediaDevices.getUserMedia({video:false,audio:true});
         localstream = stream;
         document.getElementById('senderV').srcObject = localstream;
         reciveoffer({sid,rid,sname,spic,offer});
@@ -290,7 +317,18 @@ async function status(params) {
         });
     }
 }
-
 status();
+
+function checkappisrun(params) {
+    $('.spinbox').html('<i class="fa fa-circle-o-notch fa-spin text-dark fs-1"> </i>');
+    checkappisready().then((data)=>{
+        if(data.status == true)
+        {
+            $('.spinbox').html('');
+        }
+    })
+}
+
+checkappisrun();
 
 });

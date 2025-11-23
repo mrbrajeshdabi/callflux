@@ -170,6 +170,23 @@ export async function checkappisready(params) {
     return response;
 }
 
+export async function deleteuser(id)
+{
+    let response;
+    await $.ajax({
+        type:'delete',
+        url:'https://naxivoreal.onrender.com/api/delete-user?deleteid='+id,
+        header:{'Content-Type': 'application/json'},
+        beforeSend:function(req){},
+        success:function(res)
+        {
+            response = res;
+        }
+    });
+
+    return response;
+}
+
 export function PC(localstream) {
     let socket = io('https://naxivoreal.onrender.com');
     let PC = (function(){
@@ -208,3 +225,4 @@ export function PC(localstream) {
 
     return PC.getInstance();
 }
+

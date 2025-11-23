@@ -10,6 +10,9 @@
 .loginbox{
     background-color: whitesmoke;
 }
+#mainlogout{
+    cursor: pointer;
+}
 .login_frm{
     width: 300px;
     height: auto;

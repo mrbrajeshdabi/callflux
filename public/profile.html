@@ -19,21 +19,56 @@
     
   </div>
     <div class="row p-0 m-0">
-        <div class="col-md-3 p-0 m-0 border left">
+        <div class="col-md-1 p-0 m-0 left">
             <ul class="list-group p-2">
-                <li class="list-group-item menu friends"  link="friends" id="addfrd"> <i class="fa fa-users me-5"></i> Add Friends</li>
-                <li class="list-group-item menu acll"  link="calling" id="calling"><i class="fa fa-mobile me-5" aria-hidden="true"></i> Calling</li>
-                <li class="list-group-item"  id="profile"><i class="fa fa-user-circle me-5"></i> Profile</li>
-                <li class="list-group-item"  id="logout"><i class="fa fa-chevron-circle-right me-5" aria-hidden="true"></i> Quit</li>
+                <li class="list-group-item menu friends"  link="friends" id="addfrd"> 
+                    <center><i class="fa fa-users"></i></center>
+                    <!-- <div class="d-flex justify-content-end align-items-end"> 
+                        Add Friends
+                    </div> -->
+                </li>
+                <li class="list-group-item menu acll"  link="calling" id="calling">
+                    <center><i class="fa fa-mobile" aria-hidden="true"></i></center>
+                    <!-- <div class="d-flex justify-content-end align-items-end">
+                        Calling
+                     </div> -->
+                </li>
+                <li class="list-group-item"  id="profile">
+                   <center> <i class="fa fa-user-circle"></i></center>
+                     <!-- <div class="d-flex justify-content-end align-items-end">
+                        Profile
+                     </div> -->
+                </li>
+                <li class="list-group-item"  id="logout">
+                    <center><i class="fa fa-window-close" aria-hidden="true"></i></center>
+                    <!-- <div class="d-flex justify-content-end align-items-end">
+                        Quit Window
+                    </div> -->
+                </li>
+                <li class="list-group-item"  id="mainlogout">
+                    <center><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></center>
+                    <!-- <div class="d-flex justify-content-end align-items-end ">
+                        Logout
+                    </div> -->
+                </li>
             </ul>
         </div>
-        <div class="col-md-6 p-0 m-0 border center">
+        <div class="col-md-2 m-0 p-0">
+            <center>
+                <h3 class="text-success">
+                <span class="text-danger">Note : -</span> <br>
+                You will receive a call only when you are at home page,
+                <p class="text-info">Don't worry, even if you close the app, the call will be shown in the notification.</p>
+            </h3>
+            </center>
+        </div>
+        <div class="col-md-6 p-0 m-0 center bg-dark">
             <div class="showvideo d-none">
             <div class="vbox">
-                <video  autoplay playsine  id="senderV"  class="img-fluid img-thumbnail"></video>
-                <video  autoplay playsine  id="reciverV" class="img-fluid img-thumbnail"></video>
+                <video  autoplay playsine  id="senderV"  class="img-fluid img-thumbnail mt-2 ms-3"></video>
+                <video  autoplay playsine  id="reciverV" class="img-fluid img-thumbnail ms-2"></video>
             </div>
-            <div class="btn-group w-100 p-5">
+            <div class="btn-group w-100 p-2 bg-light">
                 <button class="btn btn-dark w-100 " type="mute" id="mute"><i class="fa fa-microphone-slash"></i></button>
                 <button class="btn btn-danger w-100" type="button" id="calldisconnect"><i class="fa fa-phone-slash"></i></button>
                 <button class="btn btn-dark w-100 videoonoff" type="on" id="cameraoff"><i class="fa fa-video-slash"></i></button>

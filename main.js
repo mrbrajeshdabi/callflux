@@ -1,7 +1,6 @@
 const {app,BrowserWindow,Menu,globalShortcut,Tray,Notification,ipcMain,session} = require('electron');
 const path = require('path');
 const process = require('process');
-// import {autoUpdater} from 'electron-updater';
 
 let win;
 //electron code
@@ -14,7 +13,7 @@ const createEwindow = () =>
         title:'callflux',
         resizable:false,
         frame:true,
-        icon : path.join(__dirname,'logo.ico'),
+        icon : path.join(__dirname,'callwating.png'),
         webPreferences:{
             nodeIntegration:true,
             contextIsolation:true,
@@ -25,7 +24,7 @@ const createEwindow = () =>
         }
     });
     win.loadFile('public/index.html');
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
 
 
     win.on("minimize", function (event) {
@@ -77,16 +76,18 @@ const createEwindow = () =>
 
     });
 
-    // smallwindowlogout
     ipcMain.on('quit',(event,data)=>{
         app.isQuiting = true;
         app.quit();
     });
 
-    //call notfication
     ipcMain.on('callnotification',(event,data)=>{
-        // win.isVisible() ? win.hide() : win.show();
         win.show();
+    });
+
+    ipcMain.on('logout',(event,data)=>{
+        app.isQuiting = true;
+        app.quit();
     });
     
 }
@@ -109,24 +110,12 @@ function tray()
     });
 }
 
-// Auto update code
-// autoUpdater.autoDownload = true;
-
-// autoUpdater.on("update-available", () => {
-//   console.log("Update available…");
-// });
-
-// autoUpdater.on("update-downloaded", () => {
-//   console.log("Update downloaded. Will install on restart.");
-//   autoUpdater.quitAndInstall(); // Restart करके update install करेगा
-// });
 
 
 app.whenReady().then(()=>{
     createEwindow();
     createmenu();
     tray();
-    // autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on('web-contents-created', (event, contents) => {
@@ -142,11 +131,7 @@ app.on("window-all-closed", (event) => {
   event.preventDefault();
 });
 
-// renderer me
-// ipcRenderer.on('resume-app', () => {
-//    // Yaha kuch bhi reload ya redirect mat karo
-//    // Page wahi se resume karega
-// });
+
 
 
 
