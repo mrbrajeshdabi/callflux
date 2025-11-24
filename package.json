@@ -12,7 +12,8 @@
   "build": {
     "appId": "com.callflux.app",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon" : "applogo.png"
     },
     "publish": [
       {
