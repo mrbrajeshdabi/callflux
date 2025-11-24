@@ -13,7 +13,7 @@ const createEwindow = () =>
         title:'callflux',
         resizable:false,
         frame:true,
-        icon : path.join(__dirname,'callwating.png'),
+        icon : path.join(__dirname,'head.png'),
         webPreferences:{
             nodeIntegration:true,
             contextIsolation:true,
@@ -24,7 +24,7 @@ const createEwindow = () =>
         }
     });
     win.loadFile('public/index.html');
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
 
     win.on("minimize", function (event) {
@@ -101,7 +101,7 @@ function createmenu()
 
 function tray()
 {
-    const iconPath = path.join(__dirname, 'logo.ico');
+    const iconPath = path.join(__dirname, 'head.png');
     tray = new Tray(iconPath);
     tray.setToolTip("Z");
     tray.on("click", () => {

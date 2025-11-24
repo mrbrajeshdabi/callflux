@@ -201,7 +201,7 @@ socket.on('offer',async({sid,rid,sname,spic,offer})=>{
     {
         await answer.play();
         answer.loop = true;
-        let stream = await navigator.mediaDevices.getUserMedia({video:false,audio:true});
+        let stream = await navigator.mediaDevices.getUserMedia({video:true,audio:true});
         localstream = stream;
         document.getElementById('senderV').srcObject = localstream;
         reciveoffer({sid,rid,sname,spic,offer});
