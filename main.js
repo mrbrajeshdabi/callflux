@@ -13,7 +13,7 @@ const createEwindow = () =>
         title:'callflux',
         resizable:false,
         frame:true,
-        icon : path.join(__dirname,'logo.ico'),
+        icon : path.join(__dirname,'calllogo.png'),
         webPreferences:{
             nodeIntegration:true,
             contextIsolation:true,
@@ -101,13 +101,21 @@ function createmenu()
 
 function tray()
 {
-    const iconPath = path.join(__dirname, 'logo.ico');
+    const iconPath = path.join(__dirname, 'calllogo.png');
     tray = new Tray(iconPath);
     tray.setToolTip("Z");
     tray.on("click", () => {
         win.isVisible() ? win.hide() : win.show();
         win.focus();
     });
+
+    let cm = Menu.buildFromTemplate([
+        {label: 'quit',click: ()=> {app.isQuiting = true; app.quit(); }},
+        {label: 'show',click: ()=> {win.show();}},
+        {label: 'hide',click: ()=> {win.hide();}}
+    ]);
+
+    tray.setContextMenu(cm);
 }
 
 
