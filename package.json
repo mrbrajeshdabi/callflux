@@ -13,7 +13,7 @@
     "appId": "com.callflux.app",
     "win": {
       "target": "nsis",
-      "icon" : "applogo.png"
+      "icon" : "logo.ico"
     },
     "publish": [
       {

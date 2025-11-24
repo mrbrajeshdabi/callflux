@@ -13,7 +13,7 @@ const createEwindow = () =>
         title:'callflux',
         resizable:false,
         frame:true,
-        icon : path.join(__dirname,'head.png'),
+        icon : path.join(__dirname,'logo.ico'),
         webPreferences:{
             nodeIntegration:true,
             contextIsolation:true,
@@ -101,7 +101,7 @@ function createmenu()
 
 function tray()
 {
-    const iconPath = path.join(__dirname, 'head.png');
+    const iconPath = path.join(__dirname, 'logo.ico');
     tray = new Tray(iconPath);
     tray.setToolTip("Z");
     tray.on("click", () => {
